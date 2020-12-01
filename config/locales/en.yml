@@ -30,4 +30,11 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    messages:
+      generic_error: "The action cannot be performed"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      not_authorized: "Is not authorized to perform this action"

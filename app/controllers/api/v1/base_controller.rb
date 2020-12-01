@@ -8,11 +8,11 @@ module Api::V1
     protected
 
     def page
-      params[:page].to_i || 1
+      (params[:page] || 1).to_i
     end
 
     def per_page
-      params[:per_page].to_i || 10
+      (params[:per_page] || 10).to_i
     end
 
   end

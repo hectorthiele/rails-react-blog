@@ -1,20 +1,53 @@
-import React, { useState } from 'react';
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
-const PostsView = () => {
-    const [count, setCount] = useState(0);
+import PostActions from '../redux/actions/PostActions';
 
+//custom components
+import Header from '../layout/Header';
+import Footer from '../layout/Footer';
+import PostItem from './PostItem';
 
-    return (
-        <div className='container'>
-            <h2> Blog View Content </h2>
+class PostsView extends Component {
+    componentDidMount() {
+        this.props.getPosts();
+    }
+
+    render() {
+
+        const { posts } = this.props;
+        const postList = posts.map((post, index) => {
+            return <PostItem key={index} post={post} />
+        })
+
+        return (
             <div>
-                <p>You clicked {count} times</p>
-                <button onClick={() => setCount(count + 1)}>
-                    Click me
-                </button>
+                <Header />
+                <div className='container'>
+                    <div className='row'>
+                        <div className='posts-listing'>
+                            <div className='container'>
+                                <div className='row'>
+                                    {postList}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <Footer />
             </div>
-        </div>
-    );
+        );
+    };
 };
 
-export default PostsView;
+const structuredSelector = createStructuredSelector({
+    posts: state => state.posts
+});
+
+const mapDispatchToProps = dispatch => ({
+    getPosts: () => {
+        dispatch(PostActions.getPosts())
+    }
+});
+export default connect(structuredSelector, mapDispatchToProps)(PostsView);
