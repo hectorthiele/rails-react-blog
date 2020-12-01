@@ -26,13 +26,15 @@ class PostsView extends Component {
                 <Header />
                 <div className='container'>
                     <div className='row'>
-                        <div className='posts-listing'>
-                            <div className='container'>
-                                <div className='row'>
-                                    {postList}
+                        <main>
+                            <div className='posts-listing'>
+                                <div className='container'>
+                                    <div className='row'>
+                                        {postList}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </main>
                     </div>
                 </div>
                 <Footer />
