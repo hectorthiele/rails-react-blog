@@ -2584,3 +2584,7 @@ a.text-light:focus, a.text-light:hover {
 a.text-dark:focus, a.text-dark:hover {
   color: #1d2124 !important;
 }
+
+.post {
+    padding: 15px;
+}

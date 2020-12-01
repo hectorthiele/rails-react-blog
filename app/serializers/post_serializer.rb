@@ -1,7 +1,7 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :title, :content, :created_at
+  attributes :id, :title, :snippet, :content, :created_at
 
-  def content
-    "Custom content Header: #{object.content}"
+  def snippet
+    "#{object.content[0...100]}..."
   end
 end
