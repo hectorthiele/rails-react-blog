@@ -1,9 +1,8 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 import { formatDateTime } from '../utils/DateFormatter';
 
 const PostItem = (props) => {
-    console.log("Props PostItem", props);
     const { post } = props;
     return (
         <div className="post col-xl-12" >
@@ -16,10 +15,10 @@ const PostItem = (props) => {
                         <div className='post-meta d-flex justify-content-between'>
                             <div className='date meta-last'> {formatDateTime(post.created_at)} </div>
                         </div>
-                        <a href={'#'} >
+                        <Link to={`/posts/${post.id}`} >
                             <h3>{post.title}</h3>
-                        </a>
-                        <p className='text-muted' >
+                        </Link>
+                        <p className='text-muted'>
                             {post.snippet}
                         </p>
                     </div>
