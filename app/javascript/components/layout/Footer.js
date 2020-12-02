@@ -33,7 +33,7 @@ const Footer = () => {
             <div className="container">
               <div className="row">
                 <div className="col-md-6">
-                  <p>&copy; 2017. All rights reserved. Your great site.</p>
+                  <p>&copy; 2020. All rights reserved.</p>
                 </div>
                 <div className="col-md-6 text-right">
                   <p>Template By <a href="https://bootstrapious.com/p/bootstrap-carousel"  className="text-white">Bootstrapious</a>

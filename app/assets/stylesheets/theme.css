@@ -2588,3 +2588,7 @@ a.text-dark:focus, a.text-dark:hover {
 .post {
     padding: 15px;
 }
+
+.post-meta {
+    text-align: right;
+}

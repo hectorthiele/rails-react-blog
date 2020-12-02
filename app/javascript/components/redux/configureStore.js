@@ -8,9 +8,10 @@ const initialState = {
 };
 
 const getPostsSuccess = (state, action) => {
+  const sortedResults = action.result.sort((p1,p2) => p2.created_at >= p1.created_at ? 1 : -1 );
   return {
     ...state,
-    posts: action.result
+    posts: sortedResults
   };
 };
 
