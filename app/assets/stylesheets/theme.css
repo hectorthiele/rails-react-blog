@@ -813,8 +813,9 @@ section.latest-posts header {
 }
 
 .post-meta {
-  margin: 10px 0;
-  font-size: 0.8em;
+    margin: 10px 0;
+    font-size: 0.8em;
+    line-height: 2em;
 }
 
 .post-meta .date {
@@ -2589,6 +2590,27 @@ a.text-dark:focus, a.text-dark:hover {
     padding: 15px;
 }
 
-.post-meta {
-    text-align: right;
+.label {
+    display: inline;
+    padding: .3em .6em .3em;
+    font-size: 100%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
 }
+
+.label-success {
+    background-color: #5cb85c;
+}
+
+.label-warning {
+    background-color: #f0ad4e;
+}
+
+/*.post-meta {*/
+/*    text-align: right;*/
+/*}*/

@@ -5,14 +5,21 @@ import { formatDateTime } from '../utils/DateFormatter';
 const PostItem = (props) => {
     const { post } = props;
 
+    const isRemote = post.source === 'remote';
+    const category = isRemote ?  'Remote' : 'Local';
+    const classCategory = isRemote ? 'label-warning' : 'label-success';
+
     return (
-        <div className="post col-xl-12" >
+        <div className="post col-xl-6" >
             <PostImage post={post} />
             <div className='card'>
                 <div className="card-body">
                     <div className="post-details">
-                        <div className='post-meta justify-content-between'>
+                        <div className='post-meta d-flex justify-content-between'>
                             <div className='date meta-last'> {formatDateTime(post.created_at)}</div>
+                            <div className='category'>
+                                <span className={`label ${classCategory}`}>{category} Post</span>
+                            </div>
                         </div>
                         <CustomTitleLink post={post} />
                         <p className='text-muted'>
@@ -35,7 +42,7 @@ const PostImage = (props) => {
 
     return (
         <div className='post-thumbnail'>
-            <img className="card-img-top" src={urlImage} alt="Post Image"/>
+            <img className="img-fluid" src={urlImage} alt="Post Image"/>
         </div>
     );
 };

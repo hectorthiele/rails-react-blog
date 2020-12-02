@@ -36,7 +36,7 @@ class PostDetailView extends Component {
                             <div className='posts-listing'>
                                 <div className='container'>
                                     <div className="post-details">
-                                        <div className='post-meta justify-content-between'>
+                                        <div className='post-meta d-flex justify-content-between'>
                                             <div className='date meta-last'> {formatDateTime(post.created_at)} </div>
                                         </div>
                                         <h3>{post.title}</h3>
