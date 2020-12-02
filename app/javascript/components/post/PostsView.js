@@ -15,29 +15,18 @@ class PostsView extends Component {
     }
 
     render() {
-
         const { posts } = this.props;
         const postList = posts.map((post, index) => {
             return <PostItem key={index} post={post} />
         })
 
         return (
-            <div>
-                <Header />
+            <div className='posts-listing'>
                 <div className='container'>
                     <div className='row'>
-                        <main>
-                            <div className='posts-listing'>
-                                <div className='container'>
-                                    <div className='row'>
-                                        {postList}
-                                    </div>
-                                </div>
-                            </div>
-                        </main>
+                        {postList}
                     </div>
                 </div>
-                <Footer />
             </div>
         );
     };

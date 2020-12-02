@@ -6,7 +6,7 @@ const PostItem = (props) => {
     const { post } = props;
 
     const isRemote = post.source === 'remote';
-    const category = isRemote ?  'Remote' : 'Local';
+    const category = isRemote ? 'Remote' : 'Local';
     const classCategory = isRemote ? 'label-warning' : 'label-success';
 
     return (
@@ -32,28 +32,26 @@ const PostItem = (props) => {
     );
 };
 
-const PostImage = (props) => {
-    const { post } = props;
+const PostImage = ({ post }) => {
     const urlImage = post.url_image;
 
-    if (!urlImage){
+    if (!urlImage) {
         return null;
     }
 
     return (
         <div className='post-thumbnail'>
-            <img className="img-fluid" src={urlImage} alt="Post Image"/>
+            <img className="img-fluid" src={urlImage} alt="Post Image" />
         </div>
     );
 };
 
-const CustomTitleLink = (props) => {
-    const { post } = props;
+const CustomTitleLink = ({ post }) => {
     const isRemote = post.source === 'remote';
     const url = isRemote ? post.url : `/posts/${post.id}`;
     const targetType = isRemote ? '_blank' : null;
 
-    if (isRemote){
+    if (isRemote) {
         return (
             <a href={url} target={targetType} >
                 <h3>{post.title}</h3>
