@@ -100,7 +100,7 @@ describe Api::V1::PostsController, type: :controller do
 
     it { should respond_with :success }
     it 'should update the record' do
-      expect(Post.last.title).to eq(new_title)
+      expect(Post.find(post.id).title).to eq(new_title)
       expect(Post.count).to eq(1)
     end
   end

@@ -32,7 +32,7 @@ module Api
 
       protected
 
-      def set_resource
+      def set_post
         @post ||= Post.find(params[:id])
       end
 
