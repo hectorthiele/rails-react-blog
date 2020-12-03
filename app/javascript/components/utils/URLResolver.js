@@ -8,6 +8,7 @@ const URLResolver = {
     index: `${urlApi}/posts`,
     show: `${urlApi}/posts`,
     create: `${urlApi}/posts`,
+    update: `${urlApi}/posts`
   },
 
 };

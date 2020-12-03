@@ -19,13 +19,12 @@ class PostDetailView extends Component {
 
     render() {
 
-        if (!this.props.post) {
-            if (this.props.isLoading) {
-                return (<Loading />);
-            }
+        if (!this.props.post || this.props.isLoading) {
+            return (<Loading />);
         }
 
         let { post } = this.props;
+        console.log("Post: ", post);
         return (
             <div className='posts-listing'>
                 <div className='container'>
@@ -43,7 +42,8 @@ class PostDetailView extends Component {
 };
 
 const structuredSelector = createStructuredSelector({
-    post: state => state.post
+    post: state => state.post,
+    isLoading: state => state.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({

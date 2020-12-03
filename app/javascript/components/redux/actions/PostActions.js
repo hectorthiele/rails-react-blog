@@ -18,8 +18,13 @@ const isLoading = (isLoading) => ({
 });
 
 const savedPostSuccess = (post) => ({
-	type: PostActionTypes.CREATE_POST_SUCCESS,
+	type: PostActionTypes.SAVE_POST_SUCCESS,
 	result: post
+});
+
+const savedPostError = (response) => ({
+	type: PostActionTypes.SAVE_POST_ERROR,
+	result: response
 });
 
 
@@ -35,6 +40,7 @@ const PostActions = {
 
 	getPost: (post_id) => (dispatch) => {
 		const url = `${URLResolver.posts.show}/${post_id}`;
+		dispatch(isLoading(true));
 		return fetch(url)
 			.then(response => response.json())
 			.then(post => dispatch(getPostSuccess(post)));
@@ -47,18 +53,22 @@ const PostActions = {
 			formData.append(name, post[name]);
 		}
 
-		const url = `${URLResolver.posts.create}`;
+		const method = post.id ? 'PUT' : 'POST';
+		const url = post.id ? `${URLResolver.posts.update}/${post.id}` : `${URLResolver.posts.create}`;
 
 		// Start the loading
 		dispatch(isLoading(true));
 		return fetch(url, {
-			method: 'POST',
+			method: method,
 			body: formData
 		})
 			.then(response => response.json())
 			.then(post => {
 				dispatch(savedPostSuccess(post));
-			});
+			})
+			.catch(function (error) {
+				dispatch(savedPostError(post));
+			});;
 	}
 };
 

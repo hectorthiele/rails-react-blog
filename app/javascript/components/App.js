@@ -27,8 +27,11 @@ class App extends Component {
                         <div className='row'>
                             <main>
                                 <Switch>
+                                    {/* maintain the order */}
                                     <Route path='/posts/new' component={PostFormView} />
+                                    <Route path='/posts/:id/edit' component={PostFormView} />
                                     <Route path='/posts/:id' component={PostDetailView} />
+
                                     <Route exact path="/" component={PostsView} />
                                 </Switch>
                             </main>

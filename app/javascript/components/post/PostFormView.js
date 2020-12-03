@@ -18,9 +18,15 @@ class PostFormView extends Component {
         content: '',
         image: null
       },
-      submitDisabled: true,
-      isSubmiting: false
+      submitDisabled: true
     };
+  }
+
+  componentDidMount() {
+    let { id } = this.props.match.params;
+    if (id) {
+      this.props.getPost(id);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -28,12 +34,18 @@ class PostFormView extends Component {
     if ((this.props.isLoading !== prevProps.isLoading) && !this.props.isLoading) {
       console.log("Props: ", this.props);
       console.log("prevProps: ", prevProps);
-      if (this.props.success) {
-        toast.success("Post saved successfully");
-        // redirect to the index
-        this.props.history.push(`/`);
+      if (this.props.message) {
+        if (this.props.success) {
+          toast.success(this.props.message);
+          this.props.history.push(`/`);
+        } else {
+          toast.error(`Error found: ${this.props.message}`);
+        }
       } else {
-        toast.error(`Error found: ${this.props.message}`);
+        let { post } = this.props;
+        this.setState({
+          post
+        })
       }
     }
   }
@@ -91,7 +103,7 @@ class PostFormView extends Component {
             singleImage={true}
           />
 
-          <ActionButtonForm cancelRoute='/' submitDisabled={this.state.submitDisabled} isSubmiting={this.props.isSubmiting} />
+          <ActionButtonForm cancelRoute='/' submitDisabled={this.state.submitDisabled} />
         </div>
       </form>
     );
@@ -141,6 +153,9 @@ const structuredSelector = createStructuredSelector({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getPost: (id) => {
+    dispatch(PostActions.getPost(id))
+  },
   savePost: (post) => {
     dispatch(PostActions.savePost(post))
   }

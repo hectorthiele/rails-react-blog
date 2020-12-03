@@ -22,6 +22,12 @@ class Api::V1::PostsController < Api::V1::BaseController
     api_response(@response)
   end
 
+  def update
+    @response = SimpleCrudService.new(resource: resource, resource_params: post_params).update
+
+    api_response(@response)
+  end
+
   protected
 
   def resource

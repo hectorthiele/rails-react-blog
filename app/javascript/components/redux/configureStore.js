@@ -23,6 +23,7 @@ const getPostSuccess = (state, action) => {
   return {
     ...state,
     isLoading: false,
+    message: null,
     post: action.result
   };
 }
@@ -32,8 +33,19 @@ const savedPostSuccess = (state, action) => {
     ...state,
     isLoading: false,
     success: true,
-    message: null,
+    message: action.result.message,
     post: action.result.data
+  };
+}
+
+
+const savedPostError = (state, action) => {
+  return {
+    ...state,
+    isLoading: false,
+    success: false,
+    message: action.result.message,
+    // post: action.result.data
   };
 }
 
@@ -51,8 +63,10 @@ function rootReducer(state, action) {
       return getPostsSuccess(state, action);
     case PostActionTypes.GET_POST_SUCCESS:
       return getPostSuccess(state, action);
-    case PostActionTypes.CREATE_POST_SUCCESS:
+    case PostActionTypes.SAVE_POST_SUCCESS:
       return savedPostSuccess(state, action);
+    case PostActionTypes.SAVE_POST_ERROR:
+      return savedPostError(state, action);
     case PostActionTypes.IS_LOADING:
       return updateIsLoading(state, action);
     default:
