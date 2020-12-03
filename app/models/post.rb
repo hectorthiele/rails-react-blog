@@ -1,5 +1,8 @@
 class Post < ApplicationRecord
+  mount_uploader :image, ImageUploader
 
+  validates :title, :snippet, :content, presence: true
+  validates :title, length: { minimum: 10, maximum: 200}, allow_blank: false
   scope :ordered, -> { order(:title) }
 
   class << self

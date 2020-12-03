@@ -17,27 +17,23 @@ class App extends Component {
 
     render() {
         return (
-
             <Provider store={store}>
                 <BrowserRouter>
-                    <div>
-                        <Header />
-                        <div className='container'>
-                            <div className='row'>
-                                <main>
-                                    <Switch>
-                                        <Route path='/posts/new' component={PostFormView} />
-                                        <Route path='/posts/:id' component={PostDetailView} />
-                                        <Route exact path="/" component={PostsView} />
-                                    </Switch>
-                                </main>
-                            </div>
+                    <Header />
+                    <div className='container'>
+                        <div className='row'>
+                            <main>
+                                <Switch>
+                                    <Route path='/posts/new' component={PostFormView} />
+                                    <Route path='/posts/:id' component={PostDetailView} />
+                                    <Route exact path="/" component={PostsView} />
+                                </Switch>
+                            </main>
                         </div>
-                        <Footer />
                     </div>
+                    <Footer />
                 </BrowserRouter>
             </Provider >
-
         )
     }
 };

@@ -35,10 +35,13 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate', '~> 3.3.0'
 
 # API
-gem 'active_model_serializers'
+# gem 'active_model_serializers'
+
+gem 'carrierwave', '~> 1.0'
+# gem 'mini_magick'
+# gem 'file_validators'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

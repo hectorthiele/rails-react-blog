@@ -5,17 +5,11 @@ import { createStructuredSelector } from 'reselect';
 import PostActions from '../redux/actions/PostActions';
 
 //custom components
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
 import { formatDateTime } from "../utils/DateFormatter";
-
-
-
 
 class PostDetailView extends Component {
 
     componentDidMount() {
-        console.log("Props: ", this.props);
         let { id } = this.props.match.params;
         if (id) {
             this.props.getPost(id);

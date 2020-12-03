@@ -33,6 +33,13 @@ en:
   activerecord:
     messages:
       generic_error: "The action cannot be performed"
+      save_success: "The %{resource} was saved correctly"
+      save_error: "The %{resource} cannot be saved %{errors}"
+      update_success: "The %{resource} was updated correctly"
+      update_error: "The %{resource} cannot be updated. %{errors}"
+      delete_success: "The %{resource} has been deleted"
+      delete_error: "The %{resource} cannot be deleted. %{errors}"
+
 
   errors:
     format: "%{attribute} %{message}"

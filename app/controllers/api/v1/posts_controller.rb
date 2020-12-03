@@ -1,5 +1,6 @@
 class Api::V1::PostsController < Api::V1::BaseController
-  include Api::BaseBehavior
+
+  skip_before_action :verify_authenticity_token
 
   def index
     # authorize! :view, :company_shifts
@@ -15,15 +16,27 @@ class Api::V1::PostsController < Api::V1::BaseController
     api_response(resource)
   end
 
+  def create
+    @response = SimpleCrudService.new(resource: resource).create
+
+    api_response(@response)
+  end
+
   protected
 
   def resource
-    @post ||= Post.find(params[:id])
+    @post ||= params[:id] ? Post.find(params[:id]) : Post.new(post_params)
   end
 
   def resources
     @posts ||= Post.search(params)
-                   .paginate({ page: page, per_page: per_page })
+                   .paginate({page: page, per_page: per_page})
+  end
+
+  private
+
+  def post_params
+    params.permit(:name, :title, :snippet, :content, :image)
   end
 
 end

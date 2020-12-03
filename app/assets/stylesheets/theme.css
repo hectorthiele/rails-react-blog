@@ -75,6 +75,10 @@ aside {
   padding: 50px 0 100px;
 }
 
+main {
+    width: 100%;
+}
+
 h1 a {
   margin-left: 10px;
   font-size: 0.9em;
@@ -2611,6 +2615,14 @@ a.text-dark:focus, a.text-dark:hover {
     background-color: #f0ad4e;
 }
 
+.actions {
+    margin-left: 20px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+}
 /*.post-meta {*/
 /*    text-align: right;*/
 /*}*/

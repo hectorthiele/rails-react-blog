@@ -33,7 +33,14 @@ const PostItem = (props) => {
 };
 
 const PostImage = ({ post }) => {
-    const urlImage = post.url_image;
+    const isRemote = post.source === 'remote';
+    let urlImage = null; //post.url_image || post.image.url;
+    if (isRemote) {
+        urlImage = post.url_image;
+    } else {
+        urlImage = post.image ? post.image.url : null;
+    }
+
 
     if (!urlImage) {
         return null;

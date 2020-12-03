@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import Loading from '../layout/Loading';
+
 
 import PostActions from '../redux/actions/PostActions';
-
 //custom components
-import Header from '../layout/Header';
-import Footer from '../layout/Footer';
 import PostItem from './PostItem';
 
 class PostsView extends Component {
@@ -15,6 +14,12 @@ class PostsView extends Component {
     }
 
     render() {
+        if (this.props.isLoading) {
+            return (
+                <Loading />
+            )
+        }
+
         const { posts } = this.props;
         const postList = posts.map((post, index) => {
             return <PostItem key={index} post={post} />
@@ -33,7 +38,8 @@ class PostsView extends Component {
 };
 
 const structuredSelector = createStructuredSelector({
-    posts: state => state.posts
+    posts: state => state.posts,
+    isLoading: state => state.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({

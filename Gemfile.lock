@@ -33,11 +33,6 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_model_serializers (0.10.8)
-      actionpack (>= 4.1, < 6)
-      activemodel (>= 4.1, < 6)
-      case_transform (>= 0.2)
-      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (5.2.4.4)
       activesupport (= 5.2.4.4)
       globalid (>= 0.3.6)
@@ -78,8 +73,10 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    case_transform (0.2)
-      activesupport
+    carrierwave (1.2.3)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -105,7 +102,6 @@ GEM
     io-like (0.3.1)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    jsonapi-renderer (0.2.0)
     loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -114,6 +110,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
     mimemagic (0.3.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
@@ -221,10 +220,10 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  active_model_serializers
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
+  carrierwave (~> 1.0)
   chromedriver-helper
   coffee-rails (~> 4.2)
   duktape
