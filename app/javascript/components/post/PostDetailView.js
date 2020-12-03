@@ -4,6 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import { Link } from 'react-router-dom';
 import Loading from '../layout/Loading';
 
+import PostImage from './PostImage';
 import PostActions from '../redux/actions/PostActions';
 
 //custom components
@@ -30,12 +31,13 @@ class PostDetailView extends Component {
                 <div className='container'>
                     <div className="post-details">
                         <div className='post-meta d-flex justify-content-between'>
-                            <div className='date meta-last'> {formatDateTime(post.created_at)} </div>
+                            <div className='date meta-last' style={{ fontSize: 16 }}> {formatDateTime(post.created_at)} </div>
                             <div className='category'>
                                 <Link className={'btn btn-default'} to={`/posts/${post.id}/edit`}>Edit Post</Link>
                             </div>
                         </div>
-                        <h3>{post.title}</h3>
+                        <PostImage post={post} />
+                        <h3 style={{ marginTop: 40 }}>{post.title}</h3>
                         <p> {post.content}</p>
                     </div>
                 </div>
