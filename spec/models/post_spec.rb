@@ -9,11 +9,7 @@ describe Post do
 
   describe 'search' do
 
-    let!(:post) { create(:post, {
-        title: 'title title title',
-        snippet: ' text text tex ',
-        content: 'content content'
-    })}
+    let!(:post) { create(:post)}
 
     it 'should return the post' do
       result = Post.search()
