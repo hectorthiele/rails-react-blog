@@ -64,14 +64,13 @@ const PostActions = {
 		})
 			.then(response => response.json())
 			.then(data => {
-				console.log("Data: ", data);
 				if (data.id) {
 					return dispatch(savedPostSuccess(data));
 				}
 				return dispatch(savedPostError(data));
 			})
 			.catch(function (error) {
-				console.log("Error: ", error);
+				console.error("Error: ", error);
 				dispatch(savedPostError({ errors: { post: ['Cannot be saved'] } }));
 			});;
 	}
