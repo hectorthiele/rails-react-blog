@@ -63,11 +63,16 @@ const PostActions = {
 			body: formData
 		})
 			.then(response => response.json())
-			.then(post => {
-				dispatch(savedPostSuccess(post));
+			.then(data => {
+				console.log("Data: ", data);
+				if (data.id) {
+					return dispatch(savedPostSuccess(data));
+				}
+				return dispatch(savedPostError(data));
 			})
 			.catch(function (error) {
-				dispatch(savedPostError(post));
+				console.log("Error: ", error);
+				dispatch(savedPostError({ errors: { post: ['Cannot be saved'] } }));
 			});;
 	}
 };

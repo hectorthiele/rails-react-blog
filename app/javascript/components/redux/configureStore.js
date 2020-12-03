@@ -33,24 +33,26 @@ const savedPostSuccess = (state, action) => {
     ...state,
     isLoading: false,
     success: true,
-    message: action.result.message,
-    post: action.result.data
+    message: 'Post saved successfully',
+    post: action.result
   };
 }
 
 
 const savedPostError = (state, action) => {
+  const keyErrors = Object.keys(action.result['errors']);
+  const errors = action.result['errors'];
+  const message = keyErrors.map(key => `${key}: ${errors[key]}`).join('; ');
+
   return {
     ...state,
     isLoading: false,
     success: false,
-    message: action.result.message,
-    // post: action.result.data
+    message: message,
   };
 }
 
 const updateIsLoading = (state, action) => {
-  console.log("Is Loading: ", action.result);
   return {
     ...state,
     isLoading: true

@@ -30,9 +30,5 @@ module ApiExceptionHandler
       logger.error e.record.errors.full_messages
       api_response({ errors: e.record.errors }, :unprocessable_entity)
     end
-
-    # rescue_from CanCan::AccessDenied do |e|
-    #   api_response({ errors: I18n.t('errors.messages.not_authorized') }, :unauthorized)
-    # end
   end
 end

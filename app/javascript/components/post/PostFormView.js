@@ -32,8 +32,6 @@ class PostFormView extends Component {
   componentDidUpdate(prevProps) {
 
     if ((this.props.isLoading !== prevProps.isLoading) && !this.props.isLoading) {
-      console.log("Props: ", this.props);
-      console.log("prevProps: ", prevProps);
       if (this.props.message) {
         if (this.props.success) {
           toast.success(this.props.message);
@@ -45,7 +43,7 @@ class PostFormView extends Component {
         let { post } = this.props;
         this.setState({
           post
-        })
+        }, () => this.validatePostForm());
       }
     }
   }

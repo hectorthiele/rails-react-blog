@@ -1,10 +1,8 @@
 class Api::V1::PostsController < Api::V1::BaseController
-
+  before_action :set_resource, only: [:show, :update]
   skip_before_action :verify_authenticity_token
 
   def index
-    # authorize! :view, :company_shifts
-
     remote_search = SearchRemotePost.new
     response = resources.as_json
     response += remote_search.perform
@@ -13,36 +11,38 @@ class Api::V1::PostsController < Api::V1::BaseController
   end
 
   def show
-    api_response(resource)
+    api_response(@post)
   end
 
   def create
-    @response = SimpleCrudService.new(resource: resource).create
-
-    api_response(@response)
+    @post = Post.create!(post_params)
+    api_response(@post, :created)
   end
 
   def update
-    @response = SimpleCrudService.new(resource: resource, resource_params: post_params).update
-
-    api_response(@response)
+    response = @post.update!(post_params)
+    if response
+      api_response(@post)
+    else
+      api_response(response)
+    end
   end
 
   protected
 
-  def resource
-    @post ||= params[:id] ? Post.find(params[:id]) : Post.new(post_params)
+  def set_resource
+    @post ||= Post.find(params[:id])
   end
 
   def resources
     @posts ||= Post.search(params)
-                   .paginate({page: page, per_page: per_page})
+                   # .paginate({page: page, per_page: per_page})
   end
 
   private
 
   def post_params
-    params.permit(:name, :title, :snippet, :content, :image)
+    params.permit(:title, :snippet, :content, :image)
   end
 
 end

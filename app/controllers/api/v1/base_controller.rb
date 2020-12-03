@@ -3,8 +3,6 @@ module Api::V1
     include ApiResponder
     include ApiExceptionHandler
 
-    # before_action :authenticate_user!
-
     protected
 
     def page
@@ -14,6 +12,5 @@ module Api::V1
     def per_page
       (params[:per_page] || 10).to_i
     end
-
   end
 end
