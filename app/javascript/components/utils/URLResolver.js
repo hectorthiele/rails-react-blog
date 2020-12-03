@@ -6,10 +6,7 @@ const urlApi = `${urlServer}/api/v1`;
 
 const URLResolver = {
   posts: {
-    index: `${urlApi}/posts`,
-    show: `${urlApi}/posts`,
-    create: `${urlApi}/posts`,
-    update: `${urlApi}/posts`
+    index: `${urlApi}/posts`
   },
 
 };

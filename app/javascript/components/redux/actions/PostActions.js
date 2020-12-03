@@ -39,7 +39,7 @@ const PostActions = {
 	},
 
 	getPost: (post_id) => (dispatch) => {
-		const url = `${URLResolver.posts.show}/${post_id}`;
+		const url = `${URLResolver.posts.index}/${post_id}`;
 		dispatch(isLoading(true));
 		return fetch(url)
 			.then(response => response.json())
@@ -54,7 +54,7 @@ const PostActions = {
 		}
 
 		const method = post.id ? 'PUT' : 'POST';
-		const url = post.id ? `${URLResolver.posts.update}/${post.id}` : `${URLResolver.posts.create}`;
+		const url = post.id ? `${URLResolver.posts.index}/${post.id}` : `${URLResolver.posts.index}`;
 
 		// Start the loading
 		dispatch(isLoading(true));
