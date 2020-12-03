@@ -1,6 +1,7 @@
 import URLResolver from '../../utils/URLResolver';
 import { PostActionTypes } from '../actionTypes/PostActionTypes';
 
+
 const getPostsSuccess = results => ({
 	type: PostActionTypes.GET_POSTS_SUCCESS,
 	result: results
@@ -56,7 +57,7 @@ const PostActions = {
 		})
 			.then(response => response.json())
 			.then(post => {
-				dispatch(savedPostSuccess(post))
+				dispatch(savedPostSuccess(post));
 			});
 	}
 };

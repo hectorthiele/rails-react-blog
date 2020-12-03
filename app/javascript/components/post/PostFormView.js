@@ -1,8 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import ImageUploader from 'react-images-upload';
+import { toast } from "react-toastify";
+
+import Loading from '../layout/Loading';
 import PostActions from '../redux/actions/PostActions';
 
 class PostFormView extends Component {
@@ -15,8 +18,24 @@ class PostFormView extends Component {
         content: '',
         image: null
       },
-      submitDisabled: true
+      submitDisabled: true,
+      isSubmiting: false
     };
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if ((this.props.isLoading !== prevProps.isLoading) && !this.props.isLoading) {
+      console.log("Props: ", this.props);
+      console.log("prevProps: ", prevProps);
+      if (this.props.success) {
+        toast.success("Post saved successfully");
+        // redirect to the index
+        this.props.history.push(`/`);
+      } else {
+        toast.error(`Error found: ${this.props.message}`);
+      }
+    }
   }
 
   handleChange = (event) => {
@@ -46,10 +65,14 @@ class PostFormView extends Component {
       submitDisabled = false;
     }
 
-    this.setState({ submitDisabled })
+    this.setState({ submitDisabled });
   }
 
   render() {
+
+    if (this.props.isLoading) {
+      return (<Loading />);
+    }
 
     let { post } = this.state;
     return (
@@ -64,9 +87,11 @@ class PostFormView extends Component {
             buttonText='Choose images'
             onChange={event => this.handleSelectImage(event)}
             imgExtension={['.jpg', '.png', '.jpeg']}
+            withPreview={true}
+            singleImage={true}
           />
 
-          <ActionButtonForm cancelRoute='/' submitDisabled={this.state.submitDisabled} />
+          <ActionButtonForm cancelRoute='/' submitDisabled={this.state.submitDisabled} isSubmiting={this.props.isSubmiting} />
         </div>
       </form>
     );
@@ -77,7 +102,7 @@ class PostFormView extends Component {
 const InputFieldGroup = ({ type, label, name, value, onChange }) => {
 
   let tagProps = {
-    className: "form-control",
+    className: 'form-control',
     placeholder: `Enter the ${name} post`,
     type,
     name,
@@ -90,26 +115,29 @@ const InputFieldGroup = ({ type, label, name, value, onChange }) => {
     tag = <textarea rows={5} {...tagProps} />
   }
   return (
-    <div className="form-group col-md-12">
+    <div className='form-group col-md-12'>
       <label>{label}</label>
       {tag}
-      <small className="form-text text-muted">Insert here the {name} of the post</small>
+      <small className='form-text text-muted'>Insert here the {name} of the post</small>
     </div>
   );
 };
 
 const ActionButtonForm = ({ cancelRoute, submitDisabled }) => {
   return (
-    <div className="form-group col-md-12">
-      <Link className="btn btn-default" to={cancelRoute}>Cancel</Link>
-      <button type="submit" className="actions btn btn-info" disabled={submitDisabled}>Save</button>
+    <div className='form-group col-md-12'>
+      <Link className='btn btn-default' to={cancelRoute}>Cancel</Link>
+      <button type='submit' className='actions btn btn-info' disabled={submitDisabled}>Save</button>
     </div>
   );
 };
 
 
 const structuredSelector = createStructuredSelector({
-  post: state => state.post
+  post: state => state.post,
+  isLoading: state => state.isLoading,
+  success: state => state.success,
+  message: state => state.message
 });
 
 const mapDispatchToProps = dispatch => ({

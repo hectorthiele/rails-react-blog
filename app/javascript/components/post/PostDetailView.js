@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import Loading from '../layout/Loading';
 
 import PostActions from '../redux/actions/PostActions';
 
@@ -19,9 +20,9 @@ class PostDetailView extends Component {
     render() {
 
         if (!this.props.post) {
-            return (
-                <div className='loading'> Loading...</div>
-            );
+            if (this.props.isLoading) {
+                return (<Loading />);
+            }
         }
 
         let { post } = this.props;

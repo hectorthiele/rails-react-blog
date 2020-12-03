@@ -4,8 +4,10 @@ import { PostActionTypes } from "./actionTypes/PostActionTypes";
 
 const initialState = {
   isLoading: false,
+  success: null,
+  message: null,
   posts: [],
-  post: null,
+  post: null
 };
 
 const getPostsSuccess = (state, action) => {
@@ -29,7 +31,9 @@ const savedPostSuccess = (state, action) => {
   return {
     ...state,
     isLoading: false,
-    post: action.result
+    success: true,
+    message: null,
+    post: action.result.data
   };
 }
 

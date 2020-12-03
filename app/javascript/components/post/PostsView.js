@@ -15,9 +15,7 @@ class PostsView extends Component {
 
     render() {
         if (this.props.isLoading) {
-            return (
-                <Loading />
-            )
+            return (<Loading />);
         }
 
         const { posts } = this.props;
