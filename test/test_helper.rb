@@ -13,16 +13,16 @@ end
 module SearchMock
   def extenal_api_results
     [
-        {
-            id: SecureRandom.uuid,
-            source: :remote,
-            author: "Author name",
-            created_at: DateTime.now,
-            url_image: "",
-            title: "Test title",
-            snippet: "snippet",
-            content: "content"
-        }
+      {
+        id: SecureRandom.uuid,
+        source: :remote,
+        author: 'Author name',
+        created_at: DateTime.now,
+        url_image: '',
+        title: 'Test title',
+        snippet: 'snippet',
+        content: 'content'
+      }
     ]
   end
 end

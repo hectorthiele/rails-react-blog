@@ -7,8 +7,7 @@ module ApiExceptionHandler
     rescue_from StandardError do |e|
       logger.error e
       logger.error e.backtrace.join("\n")
-      api_response(e.backtrace.join("\n"));
-      # api_response({ errors: I18n.t('activerecord.messages.generic_error') }, :internal_server_error)
+      api_response({ errors: I18n.t('activerecord.messages.generic_error') }, :internal_server_error)
     end
 
     rescue_from CustomException do |e|

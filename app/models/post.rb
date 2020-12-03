@@ -2,8 +2,8 @@ class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   validates :title, :snippet, :content, presence: true
-  validates :title, length: { minimum: 10, maximum: 300}, allow_blank: false
-  validates :snippet, length: { minimum: 10, maximum: 300}, allow_blank: false
+  validates :title, length: { minimum: 10, maximum: 300 }, allow_blank: false
+  validates :snippet, length: { minimum: 10, maximum: 300 }, allow_blank: false
   validates :content, length: { minimum: 10 }, allow_blank: false
   scope :ordered, -> { order(:created_at) }
 
@@ -18,7 +18,7 @@ class Post < ApplicationRecord
     def filter(params)
       scope = where({})
       term = "%#{param[:title]}%"
-      scope = scope.where("title LIKE ", term) if params[:title].present?
+      scope = scope.where('title LIKE ', term) if params[:title].present?
       scope
     end
   end

@@ -3,13 +3,11 @@ require 'uri'
 require 'json'
 
 class SearchRemotePost
-
   attr_reader :search_text
 
   def initialize(search_text = 'watches')
     @search_text = search_text
   end
-
 
   SEARCH_KEY = 'whatches'.freeze
 
@@ -33,8 +31,6 @@ class SearchRemotePost
   end
 
   def normalize_resource(data)
-    # return [] unless data[:status] = 'ok'
-
     results = []
     (data['articles'] || []).each do |result|
       result_data = {}
@@ -60,5 +56,4 @@ class SearchRemotePost
   def news_api_key
     ENV['NEWS_API_KEY'] ||'41edc4f0a47d41539a3e8c30408c7699'
   end
-
 end

@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-#search and pagination
+# search and pagination
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'will_paginate', '~> 3.3.0'
 
@@ -65,12 +65,16 @@ group :test do
   # gem 'selenium-webdriver'
   # # Easy installation and use of chromedriver to run system tests with Chrome
   # gem 'chromedriver-helper', '1.2.0'
-  gem "rspec-rails"
-  gem "webmock"
-  gem "shoulda-matchers"
-  gem "factory_girl_rails"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+
   gem 'mocha'
 end
 
+gem 'rubocop', require: false
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+

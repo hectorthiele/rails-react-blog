@@ -3,6 +3,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify';
+import 'react-toastify/dist/ReactToastify.css'
+import 'react-images-upload/index.css';
 import PostsView from "./post/PostsView";
 import PostDetailView from "./post/PostDetailView";
 import PostFormView from "./post/PostFormView";

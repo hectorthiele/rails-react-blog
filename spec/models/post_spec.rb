@@ -12,7 +12,7 @@ describe Post do
     let!(:post) { create(:post)}
 
     it 'should return the post' do
-      result = Post.search()
+      result = Post.search
       expect(result.count).to eq(1)
       expect(result.first).to eq(post)
     end

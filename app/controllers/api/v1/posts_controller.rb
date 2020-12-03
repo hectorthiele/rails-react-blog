@@ -1,5 +1,5 @@
 class Api::V1::PostsController < Api::V1::BaseController
-  before_action :set_resource, only: [:show, :update]
+  before_action :set_post, only: [:show, :update]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -36,7 +36,7 @@ class Api::V1::PostsController < Api::V1::BaseController
 
   def resources
     @posts ||= Post.search(params)
-                   # .paginate({page: page, per_page: per_page})
+    # .paginate({page: page, per_page: per_page})
   end
 
   private
