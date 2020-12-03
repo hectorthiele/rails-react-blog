@@ -1,5 +1,5 @@
 
-const urlServer = 'http://localhost:3000';//
+// const urlServer = 'http://localhost:3000';
 const urlServer = 'https://hodinkee-blog.herokuapp.com';
 
 const urlApi = `${urlServer}/api/v1`;
