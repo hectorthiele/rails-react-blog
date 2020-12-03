@@ -9,7 +9,7 @@ class SearchRemotePost
     @search_text = search_text
   end
 
-  SEARCH_KEY = 'whatches'.freeze
+  SEARCH_KEY = 'whatches'
 
   def perform
     endpoint = news_api_endpoint
