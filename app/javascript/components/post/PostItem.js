@@ -10,7 +10,7 @@ const PostItem = (props) => {
     const classCategory = isRemote ? 'label-warning' : 'label-success';
 
     return (
-        <div className="post col-xl-6" >
+        <div className="post col-xl-6" style={{ marginTop: 40 }} >
             <PostImage post={post} />
             <div className='card'>
                 <div className="card-body">

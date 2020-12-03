@@ -1327,6 +1327,10 @@ main.posts-listing .post-footer {
   font-size: 0.8em;
 }
 
+.post-thumbnail {
+    display: flex;
+}
+
 .blog-post .post-thumbnail img {
   width: 100%;
   margin-bottom: 10px;

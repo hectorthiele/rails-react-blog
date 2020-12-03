@@ -5,6 +5,7 @@ module Api::V1
 
     protected
 
+    # Utils to be uses with paginate
     def page
       (params[:page] || 1).to_i
     end
