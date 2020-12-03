@@ -1,5 +1,5 @@
 class Api::V1::PostsController < Api::V1::BaseController
-  before_action :set_post, only: [:show, :update]
+  before_action :set_post, only: %i[show update]
   skip_before_action :verify_authenticity_token
 
   def index
@@ -44,5 +44,4 @@ class Api::V1::PostsController < Api::V1::BaseController
   def post_params
     params.permit(:title, :snippet, :content, :image)
   end
-
 end

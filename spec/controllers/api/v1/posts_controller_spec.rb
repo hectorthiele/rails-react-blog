@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Api::V1::PostsController, :type => :controller do
+describe Api::V1::PostsController, type: :controller do
   describe '#index' do
     context 'with remote results' do
-      let(:external_api_result) {
+      let(:external_api_result) do
         {
           id: SecureRandom.uuid,
           source: :remote,
@@ -14,7 +14,7 @@ describe Api::V1::PostsController, :type => :controller do
           snippet: 'snippet',
           content: 'content'
         }
-      }
+      end
       before do
         allow_any_instance_of(SearchRemotePost).to receive(:perform).and_return([external_api_result])
         allow_any_instance_of(Post).to receive(:search).and_return([])
@@ -50,7 +50,7 @@ describe Api::V1::PostsController, :type => :controller do
     context 'with local and remote results' do
       let(:title) { 'Title customized' }
       let!(:post) { create(:post, { title: title }) }
-      let(:external_api_result) {
+      let(:external_api_result) do
         {
           id: SecureRandom.uuid,
           source: :remote,
@@ -61,7 +61,7 @@ describe Api::V1::PostsController, :type => :controller do
           snippet: 'snippet',
           content: 'content'
         }
-      }
+      end
 
       before do
         allow_any_instance_of(SearchRemotePost).to receive(:perform).and_return([external_api_result])

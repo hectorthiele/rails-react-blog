@@ -12,19 +12,18 @@ class SearchRemotePost
   SEARCH_KEY = 'whatches'.freeze
 
   def perform
-
     endpoint = news_api_endpoint
     uri = URI("#{endpoint}?q=#{URI.escape(search_text)}")
-    puts "URI: "
+    puts 'URI: '
     puts uri
 
     request = Net::HTTP::Get.new(uri)
     request['X-Api-Key'] = news_api_key
 
-    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(request)
     end
-    puts "Response request "
+    puts 'Response request '
     puts JSON.parse(response.body)
     data = JSON.parse(response.body)
     normalize_resource(data)
@@ -44,16 +43,16 @@ class SearchRemotePost
       result_data[:content] = result['content']
       result_data[:url] = result['url']
 
-     results << result_data
+      results << result_data
     end
     results
   end
 
   def news_api_endpoint
-    "https://newsapi.org/v2/everything"
+    'https://newsapi.org/v2/everything'
   end
 
   def news_api_key
-    ENV['NEWS_API_KEY'] ||'41edc4f0a47d41539a3e8c30408c7699'
+    ENV['NEWS_API_KEY'] || '41edc4f0a47d41539a3e8c30408c7699'
   end
 end

@@ -3,7 +3,6 @@ module ApiExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-
     rescue_from StandardError do |e|
       logger.error e
       logger.error e.backtrace.join("\n")
