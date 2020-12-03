@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   mount_uploader :image, ImageUploader
 
+  validates :title, :snippet, :content, presence: true
   validates :title, length: { minimum: 10, maximum: 300}, allow_blank: false
   validates :snippet, length: { minimum: 10, maximum: 300}, allow_blank: false
   validates :content, length: { minimum: 10 }, allow_blank: false
