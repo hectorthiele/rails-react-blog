@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify';
 import PostsView from "./post/PostsView";
 import PostDetailView from "./post/PostDetailView";
 import PostFormView from "./post/PostFormView";
-// import DashboardView from "./dashboard/DashboardView";
 
 import Header from './layout/Header';
 import Footer from './layout/Footer';
